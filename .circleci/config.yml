@@ -11,12 +11,10 @@ jobs:
       resource-class: xlarge
     steps:
       - checkout
-      - android/restore-gradle-cache
-      - android/restore-build-cache
-      - android/run-tests:
-          test-command: ./gradlew test
-      - android/save-gradle-cache
-      - android/save-build-cache
+      - run:
+          name: run unittests
+          command:
+            gradle test
 
   release-build:
     executor:
